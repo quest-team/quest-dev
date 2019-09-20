@@ -3,7 +3,7 @@ resource "aws_vpc" "TATA-vpc" {
  instance_tenancy = "default"
  enable_dns_hostnames = true
 tags = {
- Name = "tata-vpc"
+ Name = "tata-vpc-1"
 }
 }
 resource "aws_subnet" "tata-subnet" {
