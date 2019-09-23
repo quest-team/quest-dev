@@ -9,6 +9,7 @@
  default = " us-west-2"
 }
 terraform {
+ required_version = ">= 0.9.0"
  backend "s3" {
  bucket = "terraform-storage-statefiles-f3"
  key = "myapp/dev/terrafor.tfstatefile"
