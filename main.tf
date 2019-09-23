@@ -1,5 +1,5 @@
 resource "aws_vpc" "TATA-vpc" {
- cidr_block = "10.50.0.0/16"
+ cidr_block = "${var.vpc_cidr}"
  instance_tenancy = "default"
  enable_dns_hostnames = true
 tags = {
@@ -8,7 +8,7 @@ tags = {
 }
 resource "aws_subnet" "tata-subnet" {
  vpc_id = "${aws_vpc.TATA-vpc.id}"
- cidr_block = "10.50.1.0/24"
+ cidr_block = "{var.subnet_cidr}"
 tags = {
  Name = "tata-subnet"
 }
@@ -22,7 +22,7 @@ tags = {
 resource "aws_route_table" "route-tata-server" {
  vpc_id = "${aws_vpc.TATA-vpc.id}"
  route{
-  cidr_block = "0.0.0.0/0"
+  cidr_block = "${var.route_cidr}"
   gateway_id = "${aws_internet_gateway.igw-tata.id}"
 }
 tags = {
@@ -40,7 +40,7 @@ resource "aws_security_group" "tata-sg" {
  ingress {
   from_port = "0"
   to_port = "65535"
-  cidr_blocks = ["0.0.0.0/0"]
+  cidr_blocks = "${var.security_grp_cidr}"
   protocol = "tcp"
 }
  tags = {
@@ -48,7 +48,7 @@ resource "aws_security_group" "tata-sg" {
 } 
 }
 resource "aws_instance" "main" {
- ami = "ami-0b37e9efc396e4c38"
+ ami = "${var.ami_id}"
  instance_type = "t2.micro"
  subnet_id = "${aws_subnet.tata-subnet.id}"
  vpc_security_group_ids = ["${aws_security_group.tata-sg.id}"]
