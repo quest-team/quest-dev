@@ -48,7 +48,7 @@ resource "aws_security_group" "tata-sg" {
 } 
 }
 resource "aws_instance" "main" {
- ami = "ami-0b37e9efc396e4c38 "
+ ami = "ami-0b37e9efc396e4c38"
  instance_type = "t2.micro"
  subnet_id = "${aws_subnet.tata-subnet.id}"
  vpc_security_group_ids = ["${aws_security_group.tata-sg.id}"]
