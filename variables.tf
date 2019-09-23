@@ -9,10 +9,10 @@
  default = " us-west-2"
 }
 terraform {
- backend "s3"{
+ backend "s3" {
  bucket = "terraform-storage-statefiles-f3"
  key = "myapp/dev/terrafor.tfstatefile"
- profile = "terraform-user"
+ profile = "terraform.provisioner"
  region = "us-east-2"
 }
 }
