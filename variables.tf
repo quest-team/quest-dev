@@ -13,7 +13,7 @@ terraform {
  bucket = "terraform-storage-statefiles-f3"
  key = "myapp/dev/terrafor.tfstatefile"
  profile = "terraform.provisioner"
- region = "us-west-2"
+ region = "us-east-1"
 }
 }
  
